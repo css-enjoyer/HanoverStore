@@ -3,8 +3,9 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Landing Page</title>
-        <link rel="stylesheet" href="Styles.css">
+        <meta name="viewport" content="width=device-width", initial-scale="1.0">
+        <title>Welcome to Hanover</title>
+        <link rel="stylesheet" href="Style.css">
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Alexandria:wght@300;500;600;800&display=swap" rel="stylesheet">
@@ -32,7 +33,7 @@
                             <li><a>Products</a></li>
                             <li><a>About</a></li>
                             <li><a>Contact</a></li>
-                            <li><button id="login" onclick="openForm()">Account</button></li>
+                            <li><button id="login" onclick="openForm()">Login</button></li>
                             <li><a><i class="fa-solid fa-bag-shopping"></i></a></li>
                         </ul>
                     </nav>
@@ -160,7 +161,7 @@
                         <i class="fa fa-star-o"></i>
                         <i class="fa fa-star-o"></i>      
                     </div>
-                    <p>₱53364.54</p>
+                    <p>₱53,364.54</p>
                 </div>
                 
                 <div class="col-4">

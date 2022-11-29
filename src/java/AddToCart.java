@@ -20,7 +20,7 @@ public class AddToCart extends HttpServlet {
             ArrayList<Cart> cartList = new ArrayList<>();
             int id = Integer.parseInt(request.getParameter("id"));
             String name = request.getParameter("name");
-            double price = Double.parseDouble(request.getParameter("price"));
+            String price = request.getParameter("price");
             
             Cart cartProduct = new Cart();
             cartProduct.setId(id);

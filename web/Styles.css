@@ -3,6 +3,7 @@
     margin: 0;
     padding: 0;
     color: white;
+    border: 1px solid red;
 }
 body {
     font-family: 'Alexandria', sans-serif;
@@ -156,6 +157,7 @@ p, small {
 .img-container {
     width: 200px;
     height: 150px;
+    margin-bottom: 15px;
 }
 .img-container img {
     overflow: hidden;
@@ -195,6 +197,7 @@ h4 {
 .offer {
     background: linear-gradient(0deg, rgba(23,4,33,1) 0%, rgba(3,0,92,1) 50%, rgba(23,4,33,1) 100%);
     margin-top: 80px;
+    margin-bottom: 100px;
     padding: 30px 0;
 }
 .col-2 .offer-img {
@@ -236,10 +239,10 @@ h4 {
 
 /* Footer */
 .footer {
-    background: #000;
+    background: linear-gradient(0deg, rgba(0,0,0,1) 0%, rgba(0,0,0,1) 80%, rgba(23,4,33,1) 100%);
     color: #8a8a8a;
     font-size: 14px;
-    padding: 16px 0 20px;
+    padding: 30px 0 20px;
 }
 .footer p {
     color: #8a8a8a;
@@ -381,6 +384,25 @@ ul {
         display: block;
         margin-top: 20px;
     }
+    
+    .row {
+        text-align: center;
+    }
+    .col-2, .col-3, .col-4 {
+        flex-basis: 100%;
+    }
+    .img-container {
+        width: 100%;
+        height: 100%;
+    }
      
 }
 
+@media only screen and (max-width: 700px) {
+    .footer-col-1, .footer-col-2, .footer-col-3, .footer-col-4 {
+        flex-basis: 100%;
+    }  
+    .footer-col-2, .footer-col-3, .footer-col-4 {
+        margin-bottom: 50px;
+    }
+}

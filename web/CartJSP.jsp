@@ -28,7 +28,7 @@
         <%
         if(!cart_list.isEmpty()) {
             for(Cart p: cart_list) {
-                cartTotal += p.getPrice();
+                cartTotal += Double.parseDouble(p.getPrice().replaceAll(",",""));
         %>
         
         <h5><%= p.getName() + ", " + p.getPrice() %></h5> <a href="RemoveFromCart?index=<%= cart_list.indexOf(p) %>">Remove</a>
