@@ -8,27 +8,33 @@ project
 **GitHub** - parang frontend ui ng Git.
 
 ## Git setup
-follow this [Git setup](https://www.theodinproject.com/lessons/foundations-setting-up-git)
+Follow this [Git setup](https://www.theodinproject.com/lessons/foundations-setting-up-git)
 > Download Git bash if you're using Windows
 
 ## Common Git commands
 ``` bash
 # clone chosen repository (make sure you're a collaborator, if not ask repo owner)
 git clone git@github.com:css-enjoyer/HanoverStore.git
+
 # implement new features and updates by creating a new branch and switching to it
 # good practice to avoid bugs getting mixed with master branch
 git checkout -b "new_branch"
-# stage/ add updates
-# . means current directory, every file changed will be added
+
+# START coding and making new changes in this step, after that...
+
+# stage/ add updates, . means current directory, every file changed will be added
 # you can also specify a file name
 git add .
+
+# commit to confirm changes
 # make sure the commit message is concise and imperative
 git commit -m "commit message"
+
 # push updates to github
 git push origin "branch_name"
 ```
 
 ## Creating pull requests
-- make sure to add screenshot and a short comment
-- include people assigned to the task as reviewer (optional)
+- make sure to add a screenshot and short comment/s of the new updates
+- include people assigned to the task as reviewer *(optional)*
 - merge the request if you're sure or ask fellow collaborator 
