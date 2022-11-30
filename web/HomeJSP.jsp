@@ -25,6 +25,7 @@
         <link href="https://fonts.googleapis.com/css2?family=Alexandria:wght@300;500;600;800&display=swap" rel="stylesheet">
         <script src="https://kit.fontawesome.com/14074f687d.js" crossorigin="anonymous"></script>
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.0/css/fontawesome.min.css">
+        <link rel="shortcut icon" href="./Images/LogoIconT.png">
     </head>
     <body>
         <div class="header">

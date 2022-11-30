@@ -161,6 +161,21 @@ p, small {
     margin: 10px 0;
     transition: .2s ease-in-out;
 }
+
+.col-4.remove a {
+    display: inline-block;
+    background: #b40000;
+    color: white; 
+    padding: 8px 30px;
+    margin: 10px 0;
+    transition: .2s ease-in-out;
+}
+
+.col-4.remove a:hover {
+    background: #e00000;
+    filter: brightness(200%);
+}
+
 .col-4 a:hover {
     background: #006633;
     filter: brightness(200%);
@@ -352,6 +367,15 @@ ul {
     font-family: inherit;
     cursor: pointer;
 }
+
+form button, form input[type="submit"] {
+    width: min-content;
+    padding: 10px 35px;
+    color: white;
+    font-family: inherit;
+    cursor: pointer;
+}
+
 #loginform button {
     background-color: #111;
 }
