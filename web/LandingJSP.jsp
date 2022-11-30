@@ -40,10 +40,10 @@
                     </div>
                     <nav>
                         <ul>
-                            <li><a>Home</a></li>
-                            <li><a>Products</a></li>
-                            <li><a>About</a></li>
-                            <li><a>Contact</a></li>
+                            <li><a href="LandingJSP.jsp">Home</a></li>
+                            <li><a href="#products">Products</a></li>
+                            <li><a href="#about-contact">About</a></li>
+                            <li><a href="#about-contact">Contact</a></li>
                             <li><button id="login" onclick="openForm()">Login</button></li>
                             <li><a><i class="fa-solid fa-bag-shopping"></i></a></li>
                         </ul>
@@ -80,7 +80,7 @@
         </div>
         
         <!-- Products -->
-        <div class="small-container">
+        <div class="small-container" id="products">
             <h2 class="title">Available Products</h2>
             <div class="row">
         <%  
@@ -177,7 +177,7 @@
         </div>
         
         <!-- Footer -->
-        <div class="footer">
+        <div class="footer" id="about-contact">
             <div class="container">
                 <div class="row">
                     <div class="footer-col-1">
