@@ -1,4 +1,14 @@
+<%@page import="java.util.ArrayList"%>
+<%@page import="Model.Product"%>
+<%@page import="Model.ProductInventory"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+
+<%
+    ProductInventory inventory = new ProductInventory();
+    ArrayList<Product> pList = inventory.getProductInvetory();
+    Product pOffer = inventory.getProductOffer();
+%>
+
 <!DOCTYPE html>
 <html>
     <head>
@@ -68,207 +78,31 @@
             </div>
         </div>
         
-        <!-- Featured Products -->
+        <!-- Products -->
         <div class="small-container">
-            <h2 class="title">Featured Products</h2>
+            <h2 class="title">Available Products</h2>
             <div class="row">
-                <!-- Each Product, modify to print for each object stored in arraylist  -->
-                <div class="col-4">
-                    <img class="feat-prod-img" src="Images/Featured-TSJordan1s.png"/>
-                    <h4>Travis Scott x Jordan 1s</h4>
-                    <div class="rating">
-                        <i class="fa fa-star"></i>
-                        <i class="fa fa-star"></i>
-                        <i class="fa fa-star"></i>
-                        <i class="fa fa-star"></i>
-                        <i class="fa fa-star-o"></i>      
+        <%  
+            if(!pList.isEmpty()) {
+                for(Product p: pList) {     
+        %>
+                    <div class="col-4">
+                        <div class="img-container">
+                            <img class="feat-prod-img" src="<%= p.getImage() %>"/>
+                        </div>
+                        <h4><%= p.getName() %></h4>
+                        <div class="rating">
+                    <%  for(int i = 0; i < p.getRating(); i++) { %>
+                            <i class="fa fa-star"></i>
+                    <%  }                                        %>
+                        </div>
+                        <p>₱<%= p.getPrice() %></p>
+                        <a href="AddToCart?id=<%=p.getId()%>&name=<%=p.getName()%>&price=<%=p.getPrice()%>">Add To Cart</a>
                     </div>
-                    <p>₱94,689.00</p>
-                </div>
-                
-                <div class="col-4">
-                    <img class="feat-prod-img" src="Images/Featured-NikeXYeezyZenGrey.png"/>
-                    <h4>Nike x Yeezy Zen Grey</h4>
-                    <div class="rating">
-                        <i class="fa fa-star"></i>
-                        <i class="fa fa-star"></i>
-                        <i class="fa fa-star"></i>
-                        <i class="fa fa-star"></i>
-                        <i class="fa fa-star-o"></i>      
-                    </div>
-                    <!-- <p>₱185,699.00</p> -->    
-                    <p>Sold Out</p>
-                </div>
-                
-                <div class="col-4">
-                    <img class="feat-prod-img" src="Images/Featured-BalenciagaTrack2Biege.png"/>
-                    <h4>Balenciaga Track 2s Biege/Black</h4>
-                    <div class="rating">
-                        <i class="fa fa-star"></i>
-                        <i class="fa fa-star"></i>
-                        <i class="fa fa-star"></i>
-                        <i class="fa fa-star-o"></i>
-                        <i class="fa fa-star-o"></i>      
-                    </div>
-                    <p>₱325,999.00</p>
-                </div>
-            </div>
-            
-            <!-- Latest Products -->
-            <h2 class="title">Latest Products</h2>
-            <div class="row">
-                <!-- Each Product, modify to print for each object stored in arraylist  -->
-                <div class="col-4">
-                    <div class="img-container">
-                        <img class="feat-prod-img" src="Images/Featured-TSJordan1s.png"/>
-                    </div>
-                    <h4>Travis Scott x Jordan 1s</h4>
-                    <div class="rating">
-                        <i class="fa fa-star"></i>
-                        <i class="fa fa-star"></i>
-                        <i class="fa fa-star"></i>
-                        <i class="fa fa-star"></i>
-                        <i class="fa fa-star-o"></i>      
-                    </div>
-                    <p>₱94,689.00</p>
-                </div>
-                
-                <div class="col-4">
-                    <div class="img-container">
-                        <img class="feat-prod-img" src="Images/Featured-NikeXYeezyZenGrey.png"/>
-                    </div>
-                    <h4>Nike x Yeezy Zen Grey</h4>
-                    <div class="rating">
-                        <i class="fa fa-star"></i>
-                        <i class="fa fa-star"></i>
-                        <i class="fa fa-star-half"></i>
-                        <i class="fa fa-star-o"></i>
-                        <i class="fa fa-star-o"></i>      
-                    </div>
-                    <!-- <p>₱185,699.00</p> -->    
-                    <p>Sold Out</p>
-                </div>
-                
-                <div class="col-4">
-                    <div class="img-container">
-                        <img class="feat-prod-img" src="Images/AdidasXGucciGazelleRed.png"/>
-                    </div>
-                    <h4>Adidas X Gucci Gazelle</h4>
-                    <div class="rating">
-                        <i class="fa fa-star"></i>
-                        <i class="fa fa-star"></i>
-                        <i class="fa fa-star"></i>
-                        <i class="fa fa-star-o"></i>
-                        <i class="fa fa-star-o"></i>      
-                    </div>
-                    <p>₱53,364.54</p>
-                </div>
-                
-                <div class="col-4">
-                    <div class="img-container">
-                        <img class="feat-prod-img" src="Images/RickOwensVintageSneaks.png"/>
-                    </div>
-                    <h4>Rick Owens Vintage Sneaks</h4>
-                    <div class="rating">
-                        <i class="fa fa-star"></i>
-                        <i class="fa fa-star"></i>
-                        <i class="fa fa-star"></i>
-                        <i class="fa fa-star"></i>
-                        <i class="fa fa-star-half"></i>      
-                    </div>
-                    <p>₱81,055.00</p>
-                </div>
-                
-                <div class="col-4">
-                    <div class="img-container">
-                        <img class="feat-prod-img" src="Images/Jordan1RetroHighDior.png"/>
-                    </div>
-                    <h4>Js1 RH Dior</h4>
-                    <div class="rating">
-                        <i class="fa fa-star"></i>
-                        <i class="fa fa-star"></i>
-                        <i class="fa fa-star"></i>
-                        <i class="fa fa-star"></i>
-                        <i class="fa fa-star"></i>      
-                    </div>
-                    <p>₱353,687.50</p>
-                </div>
-                
-                <div class="col-4">
-                    <div class="img-container">
-                        <img class="feat-prod-img" src="Images/AdidasY3Runner4D.png"/>
-                    </div>
-                    <h4>Adidas Y3 Runners</h4>
-                    <div class="rating">
-                        <i class="fa fa-star"></i>
-                        <i class="fa fa-star"></i>
-                        <i class="fa fa-star"></i>
-                        <i class="fa fa-star"></i>
-                        <i class="fa fa-star"></i>      
-                    </div>
-                    <p>₱40,259.50</p>
-                </div>
-                
-                <div class="col-4">
-                    <div class="img-container">
-                        <img class="feat-prod-img" src="Images/NikeSBDunkLowCoffeeLovers.png"/>
-                    </div>
-                    <h4>Nike SBD CLs</h4>
-                    <div class="rating">
-                        <i class="fa fa-star"></i>
-                        <i class="fa fa-star"></i>
-                        <i class="fa fa-star"></i>
-                        <i class="fa fa-star"></i>
-                        <i class="fa fa-star"></i>      
-                    </div>
-                    <p>₱31,125.50</p>
-                </div>
-                
-                <div class="col-4">
-                    <div class="img-container">
-                        <img class="feat-prod-img" src="Images/NikeAirMax1AtmosElephant.png"/>
-                    </div>
-                    <h4>Air Max 1 Atmost E</h4>
-                    <div class="rating">
-                        <i class="fa fa-star"></i>
-                        <i class="fa fa-star"></i>
-                        <i class="fa fa-star"></i>
-                        <i class="fa fa-star"></i>
-                        <i class="fa fa-star"></i>      
-                    </div>
-                    <p>₱33,499.79</p>
-                </div>
-                
-                <div class="col-4">
-                    <div class="img-container">
-                        <img class="feat-prod-img" src="Images/Kobe6ProtroEYBL.png"/>
-                    </div>
-                    <h4>Kobe 6 Protro</h4>
-                    <div class="rating">
-                        <i class="fa fa-star"></i>
-                        <i class="fa fa-star"></i>
-                        <i class="fa fa-star"></i>
-                        <i class="fa fa-star"></i>
-                        <i class="fa fa-star"></i>      
-                    </div>
-                    <p>₱43,099.79</p>
-                </div>
-                
-                <div class="col-4">
-                    <div class="img-container">
-                        <img class="feat-prod-img" src="Images/Jordan1RetroHighTrophyRoom.png"/>
-                    </div>
-                    <h4>J1 RH Trophy Room</h4>
-                    <div class="rating">
-                        <i class="fa fa-star"></i>
-                        <i class="fa fa-star"></i>
-                        <i class="fa fa-star"></i>
-                        <i class="fa fa-star"></i>
-                        <i class="fa fa-star"></i>      
-                    </div>
-                    <p>₱89,099.79</p>
-                </div>
-                
+        <%      
+                }               
+            }   
+        %>
             </div>
         </div>
         
@@ -277,14 +111,15 @@
             <div class="small-container">
                 <div class="row">
                     <div class="col-2">
-                        <img src="Images/Offer-ChuckTaylorXACDC.jpg" class="offer-img"/>
+                        <img src="<%= pOffer.getImage() %>" class="offer-img"/>
                     </div>
                     <div class="col-2">
                         <p>Converse pays homage to to the band’s 1978 album ‘Powerage’</p>
-                        <h1>AC/DC Chuck Taylors</h1>
+                        <h1><%= pOffer.getName() %></h1>
                         <small>In 2009, Converse dropped a Chuck Taylor All Stars collection featuring Australian rock legends AC/DC.</small>
                         <br>
-                        <a href="#" class="btn">Buy Now &#8594;</a>
+                        <p>₱<%= pOffer.getPrice() %></p>
+                        <a href="AddToCart?id=<%=pOffer.getId()%>&name=<%=pOffer.getName()%>&price=<%=pOffer.getPrice()%>" class="btn">Buy Now &#8594;</a>
                     </div>
                 </div>
             </div>

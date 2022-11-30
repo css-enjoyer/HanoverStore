@@ -1,38 +1,16 @@
+<%@page import="Model.ProductInventory"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="Model.Product"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 
-<%  
-    ArrayList<Product> pList = new ArrayList();
-    
-    Product p1 = new Product(1, "Travis Scott x Jordan 1s", "94,689.00", "Images/Featured-TSJordan1s.png", 8);
-    Product p2 = new Product(2, "Nike x Yeezy Zen Grey", "185,699.00", "Images/Featured-NikeXYeezyZenGrey.png", 4);
-    Product p3 = new Product(3, "Adidas X Gucci Gazelle", "53,364.00", "Images/AdidasXGucciGazelleRed.png", 5);
-    Product p4 = new Product(4, "Rick Owens Vintage Sneaks", "81,055.00", "Images/RickOwensVintageSneaks.png", 8);
-    Product p5 = new Product(5, "Js1 RH Dior", "353,587.50", "Images/Jordan1RetroHighDior.png", 9);
-    Product p6 = new Product(6, "Adidas Y3 Runners", "40,259.00", "Images/AdidasY3Runner4D.png", 5);
-    Product p7 = new Product(7, "Nike SBD CLs", "31,125.50", "Images/NikeSBDunkLowCoffeeLovers.png", 5);
-    Product p8 = new Product(8, "Air Max 1 Atmost E", "33,499.00", "Images/NikeAirMax1AtmosElephant.png", 7);
-    Product p9 = new Product(9, "Kobe 6 Protro", "43,099.00", "Images/Kobe6ProtroEYBL.png", 5);
-    Product p10 = new Product(10, "J1 RH Trophy Room", "89,099.00", "Images/Jordan1RetroHighTrophyRoom.png", 6);    
-    
-    Product pOffer = new Product(11, "AC/DC Chuck Taylors", "4,520.00", "Images/Offer-ChuckTaylorXACDC.jpg", 9);    
-
-    pList.add(p1);
-    pList.add(p2);
-    pList.add(p3);
-    pList.add(p4);
-    pList.add(p5);
-    pList.add(p6);
-    pList.add(p7);
-    pList.add(p8);
-    pList.add(p9);
-    pList.add(p10);
-    
-
+<%      
     response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate");
     if(session.getAttribute("username") == null) 
-        response.sendRedirect("LandingJSP.jsp");          
+        response.sendRedirect("LandingJSP.jsp");
+    
+    ProductInventory inventory = new ProductInventory();
+    ArrayList<Product> pList = inventory.getProductInvetory();
+    Product pOffer = inventory.getProductOffer();
 %>
             
 <!DOCTYPE html>
@@ -82,26 +60,32 @@
             </div>
         </div>
         
-        <!-- Latest Products -->
+        <!-- Products -->
         <div class="small-container">
             <h2 class="title">Available Products</h2>
             <div class="row">
             
-        <%  for(Product p: pList) {     %>
-                <div class="col-4">
-                    <div class="img-container">
-                        <img class="feat-prod-img" src="<%= p.getImage() %>"/>
+        <%  
+            if(!pList.isEmpty()) {
+                for(Product p: pList) {     
+        %>
+                    <div class="col-4">
+                        <div class="img-container">
+                            <img class="feat-prod-img" src="<%= p.getImage() %>"/>
+                        </div>
+                        <h4><%= p.getName() %></h4>
+                        <div class="rating">
+                    <%  for(int i = 0; i < p.getRating(); i++) { %>
+                            <i class="fa fa-star"></i>
+                    <%  }                                        %>
+                        </div>
+                        <p>₱<%= p.getPrice() %></p>
+                        <a href="AddToCart?id=<%=p.getId()%>&name=<%=p.getName()%>&price=<%=p.getPrice()%>">Add To Cart</a>
                     </div>
-                    <h4><%= p.getName() %></h4>
-                    <div class="rating">
-                <%  for(int i = 0; i < p.getRating(); i++) { %>
-                        <i class="fa fa-star"></i>
-                <%  }                                        %>
-                    </div>
-                    <p>₱<%= p.getPrice() %></p>
-                    <a href="AddToCart?id=<%=p.getId()%>&name=<%=p.getName()%>&price=<%=p.getPrice()%>">Add To Cart</a>
-                </div>
-        <%  }                           %>
+        <%      
+                }               
+            }   
+        %>
             </div>
         </div>
             
@@ -165,10 +149,6 @@
         </div>
         
         <div class="mainsection">
-            <div>
-                <a href="AddToCart?id=<%=p1.getId()%>&name=<%=p1.getName()%>&price=<%=p1.getPrice()%>"><%=p1.getName()%></a>
-            </div>
-            
           <%if(session.getAttribute("order-status") == null) {
                 // order failed
                 out.println("order failed");

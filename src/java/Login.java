@@ -1,5 +1,6 @@
 
 import Model.Cart;
+import Model.Product;
 import java.io.IOException;
 import java.util.ArrayList;
 import javax.servlet.ServletException;
@@ -13,8 +14,9 @@ public class Login extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
+        
         HttpSession session = request.getSession();
-
+        
         String user = request.getParameter("user");
         String pass = request.getParameter("pass");
         
