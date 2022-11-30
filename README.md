@@ -9,7 +9,7 @@ project
 
 ## Git setup
 Follow this [Git setup](https://www.theodinproject.com/lessons/foundations-setting-up-git)
-> Download Git bash if you're using Windows
+> Download Git bash if you're using Windows then proceed to step 2 in the given link
 
 ## Common Git commands
 ``` bash
@@ -37,4 +37,4 @@ git push origin "branch_name"
 ## Creating pull requests
 - make sure to add a screenshot and short comment/s of the new updates
 - include people assigned to the task as reviewer *(optional)*
-- merge the request if you're sure or ask fellow collaborator 
+- merge the request if you're sure or ask a fellow collaborator 
