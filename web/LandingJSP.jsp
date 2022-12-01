@@ -98,7 +98,6 @@
                     <%  }                                        %>
                         </div>
                         <p>₱<%= p.getPrice() %></p>
-                        <a href="AddToCart?id=<%=p.getId()%>&name=<%=p.getName()%>&price=<%=p.getPrice()%>">Add To Cart</a>
                     </div>
         <%      
                 }               
