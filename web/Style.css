@@ -51,6 +51,7 @@ nav ul li a:hover, #login:hover, nav ul li a {
 }
 a {
     text-decoration: none;
+    cursor: pointer;
 }
 nav ul li a:after, #login:after {
     display:block;

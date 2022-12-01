@@ -53,7 +53,7 @@
                     <div class="col-2">
                         <h1>The Best Plug <br> For The Best Kicks!</h1>
                         <p>Don't ever let your head down, unless it's to admire our shoes.</p>
-                        <a href="" class="explore-btn btn">Explore Now &#8594;</a> <!-- Html code -->
+                        <a class="explore-btn btn" onclick="openForm()">Explore Now &#8594;</a> <!-- Html code -->
                     </div>
                     <div class="col-2">
                         <img src="Images/Jordans.png"/>
@@ -119,7 +119,7 @@
                         <small>In 2009, Converse dropped a Chuck Taylor All Stars collection featuring Australian rock legends AC/DC.</small>
                         <br>
                         <p>₱<%= pOffer.getPrice() %></p>
-                        <a href="AddToCart?id=<%=pOffer.getId()%>&name=<%=pOffer.getName()%>&price=<%=pOffer.getPrice()%>" class="btn">Buy Now &#8594;</a>
+                        <a onclick="openForm()" class="btn">Buy Now &#8594;</a>
                     </div>
                 </div>
             </div>
