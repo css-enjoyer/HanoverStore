@@ -42,6 +42,9 @@ nav ul li a, #login {
     text-decoration: none;
     transition:color .15s ease-in-out;
 }
+nav ul #login {
+    padding: 0;
+}
 nav ul li a:hover, #login:hover, nav ul li a {
     background-size: 100% 100%;
     cursor: pointer;
