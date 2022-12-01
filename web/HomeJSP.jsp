@@ -149,14 +149,18 @@
             </div>
         </div>
         
+    <!--    
         <div class="mainsection">
-          <%if(session.getAttribute("order-status") == null) {
+          <%-- if(session.getAttribute("order-status") == null) {
                 // order failed
                 out.println("order failed");
             } else {
                 // order success
                 out.println("order success");
-            }%>
+            } --%> 
+            
         </div>
+    -->
+    
     </body>
 </html>
