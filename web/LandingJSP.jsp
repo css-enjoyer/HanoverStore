@@ -45,7 +45,7 @@
                             <li><a href="#about-contact">About</a></li>
                             <li><a href="#about-contact">Contact</a></li>
                             <li><button id="login" onclick="openForm()">Login</button></li>
-                            <li><a><i class="fa-solid fa-bag-shopping"></i></a></li>
+                            <li><a onclick="openForm()"><i class="fa-solid fa-bag-shopping"></i></a></li>
                         </ul>
                     </nav>
                 </div>
