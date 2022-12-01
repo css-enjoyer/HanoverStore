@@ -41,7 +41,8 @@ public class AddToCart extends HttpServlet {
                 for (Cart c : sessionCart) {
                     if (c.getId() == id) {
                         exist = true;
-                        out.println("Already in Cart. <a href='CartJSP.jsp'>Go to Cart Page</a>");
+                //        out.println("Already in Cart. <a href='CartJSP.jsp'>Go to Cart Page</a>");
+                        response.sendRedirect("HomeJSP.jsp");
                     }
                 //    out.println(c.toString());
                 }
