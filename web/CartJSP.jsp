@@ -33,8 +33,8 @@
     <body>
         <div class="container">
             <div class="small-container">
-                <h1 class="title">Your cart contains: </h1>
-                <a href="HomeJSP.jsp">← Back to home</a>
+                <h1 class="title cart-title">Your cart contains: </h1>
+                <a href="HomeJSP.jsp" class="home-btn">← Back to home</a>
                 <%
                 if(!cart_list.isEmpty()) {
                     for(Cart p: cart_list) {
@@ -48,7 +48,7 @@
                 } else {
                 %>
 
-                <h5>Nothing, your cart is empty.</h5>
+                <h5 class="empty-text">Nothing, your cart is empty.</h5>
 
                 <%
                 }
