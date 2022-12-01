@@ -52,7 +52,7 @@
                     <div class="col-2">
                         <h1>The Best Plug <br> For The Best Kicks!</h1>
                         <p>Don't ever let your head down, unless it's to admire our shoes.</p>
-                        <a href="" class="explore-btn btn">Explore Now &#8594;</a> <!-- Html code -->
+                        <a href="#products" class="explore-btn btn">Explore Now &#8594;</a> <!-- Html code -->
                     </div>
                     <div class="col-2">
                         <img src="Images/Jordans.png"/>
