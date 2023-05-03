@@ -2,27 +2,27 @@
 <web-app version="2.5" xmlns="http://java.sun.com/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd">
     <servlet>
         <servlet-name>Login</servlet-name>
-        <servlet-class>Login</servlet-class>
+        <servlet-class>Controller.Login</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>Logout</servlet-name>
-        <servlet-class>Logout</servlet-class>
+        <servlet-class>Controller.Logout</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>AddToCart</servlet-name>
-        <servlet-class>AddToCart</servlet-class>
+        <servlet-class>Controller.AddToCart</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>ViewCart</servlet-name>
-        <servlet-class>ViewCart</servlet-class>
+        <servlet-class>Controller.ViewCart</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>RemoveFromCart</servlet-name>
-        <servlet-class>RemoveFromCart</servlet-class>
+        <servlet-class>Controller.RemoveFromCart</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>Order</servlet-name>
-        <servlet-class>Order</servlet-class>
+        <servlet-class>Controller.Order</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>Login</servlet-name>
