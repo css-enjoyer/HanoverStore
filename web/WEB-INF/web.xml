@@ -14,6 +14,14 @@
             <param-value>org.apache.derby.jdbc.ClientDriver</param-value>
         </init-param>
         <init-param>
+            <param-name>dbUsername</param-name>
+            <param-value>app</param-value>
+        </init-param>
+        <init-param>
+            <param-name>dbPassword</param-name>
+            <param-value>app</param-value>
+        </init-param>
+        <init-param>
             <param-name>dbDriverURL</param-name>
             <param-value>jdbc:derby</param-value>
         </init-param>
