@@ -3,6 +3,32 @@
     <servlet>
         <servlet-name>Login</servlet-name>
         <servlet-class>Controller.Login</servlet-class>
+        <!-- Product Offer -->
+        <init-param>
+            <param-name>productOffer</param-name>
+            <param-value>AC/DC Chuck Taylors</param-value>
+        </init-param>
+        <!-- Database Parameters -->
+        <init-param>
+            <param-name>dbDriverClass</param-name>
+            <param-value>org.apache.derby.jdbc.ClientDriver</param-value>
+        </init-param>
+        <init-param>
+            <param-name>dbDriverURL</param-name>
+            <param-value>jdbc:derby</param-value>
+        </init-param>
+        <init-param>
+            <param-name>dbHost</param-name>
+            <param-value>localhost</param-value>
+        </init-param>
+        <init-param>
+            <param-name>dbPort</param-name>
+            <param-value>1527</param-value>
+        </init-param>
+        <init-param>
+            <param-name>dbName</param-name>
+            <param-value>Product</param-value>
+        </init-param>
     </servlet>
     <servlet>
         <servlet-name>Logout</servlet-name>
