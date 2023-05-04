@@ -8,7 +8,7 @@
     if(session.getAttribute("username") == null) 
         response.sendRedirect("LandingJSP.jsp");
     
-    ProductInventory inventory = new ProductInventory();
+    ProductInventory inventory = (ProductInventory) session.getAttribute("inventory");
     ArrayList<Product> pList = inventory.getProductInvetory();
     Product pOffer = inventory.getProductOffer();
 %>

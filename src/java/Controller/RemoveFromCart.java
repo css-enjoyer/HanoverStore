@@ -1,22 +1,34 @@
+package Controller;
 
+
+import Model.Cart;
 import java.io.IOException;
+import java.io.PrintWriter;
+import java.util.ArrayList;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-public class Logout extends HttpServlet {
+/**
+ *
+ * @author Isaac
+ */
+public class RemoveFromCart extends HttpServlet {
+
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         
-        HttpSession session = request.getSession();
-        session.removeAttribute("username");
-        session.invalidate();
-        response.sendRedirect("LandingJSP.jsp");
-        
+            HttpSession session = request.getSession();
+            ArrayList<Cart> sessionCart = (ArrayList<Cart>)session.getAttribute("cart-list");
+            int index = Integer.parseInt(request.getParameter("index"));
+            sessionCart.remove(index);
+            session.setAttribute("cart-list", sessionCart);
+            response.sendRedirect("CartJSP.jsp");
+            
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

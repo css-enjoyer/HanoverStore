@@ -3,11 +3,11 @@
 <%@page import="Model.ProductInventory"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 
-<%
+<%--
     ProductInventory inventory = new ProductInventory();
     ArrayList<Product> pList = inventory.getProductInvetory();
     Product pOffer = inventory.getProductOffer();
-%>
+--%>
 
 <!DOCTYPE html>
 <html>
@@ -79,11 +79,13 @@
             </div>
         </div>
         
-        <!-- Products -->
+<!--    REMOVE (?) 
+        
+        <!-- Products 
         <div class="small-container" id="products">
             <h2 class="title">Available Products</h2>
             <div class="row">
-        <%  
+        <%--  
             if(!pList.isEmpty()) {
                 for(Product p: pList) {     
         %>
@@ -102,28 +104,29 @@
         <%      
                 }               
             }   
-        %>
+        --%>
             </div>
         </div>
         
-        <!-- Offered Product -->
+         Offered Product 
         <div class="offer">
             <div class="small-container">
                 <div class="row">
                     <div class="col-2">
-                        <img src="<%= pOffer.getImage() %>" class="offer-img"/>
+                        <img src="<%--= pOffer.getImage() %>" class="offer-img"/>
                     </div>
                     <div class="col-2">
                         <p>Converse pays homage to to the band’s 1978 album ‘Powerage’</p>
                         <h1><%= pOffer.getName() %></h1>
                         <small>In 2009, Converse dropped a Chuck Taylor All Stars collection featuring Australian rock legends AC/DC.</small>
                         <br>
-                        <p>₱<%= pOffer.getPrice() %></p>
+                        <p>₱<%= pOffer.getPrice() --%></p>
                         <a onclick="openForm()" class="btn">Buy Now &#8594;</a>
                     </div>
                 </div>
             </div>
         </div>
+-->
         
         <!-- Testimonial Section -->
         <div class="testimonial">

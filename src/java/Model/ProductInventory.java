@@ -8,6 +8,7 @@ public class ProductInventory {
     ArrayList<Product> pList = new ArrayList();
     Product pOffer;
     
+    /* 
     public ProductInventory() {
         Product p1 = new Product(1, "Travis Scott x Jordan 1s", "94,689.00", "Images/Featured-TSJordan1s.png", 8);
         Product p2 = new Product(2, "Nike x Yeezy Zen Grey", "185,699.00", "Images/Featured-NikeXYeezyZenGrey.png", 4);
@@ -33,6 +34,7 @@ public class ProductInventory {
         pList.add(p9);
         pList.add(p10);
     }
+    */
     
     public ArrayList getProductInvetory() {
         return pList;
