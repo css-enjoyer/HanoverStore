@@ -12,7 +12,7 @@
         <title>JSP Page</title>
     </head>
     <body>
-        <form method="post" action="RegisterServlet">
+        <form method="post" action="Register">
 
             <div class="input-group">
                 <label>Username</label>

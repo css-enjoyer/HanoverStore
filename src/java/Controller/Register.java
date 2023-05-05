@@ -6,41 +6,124 @@ package Controller;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+import security.Security;
+import nl.captcha.Captcha;
 
 /**
  *
  * @author maxim
  */
 public class Register extends HttpServlet {
-
-    /**
-     * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
-     * methods.
-     *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
-     */
+    
+    private Connection conn;
+    
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        try ( PrintWriter out = response.getWriter()) {
-            /* TODO output your page here. You may use following sample code. */
-            out.println("<!DOCTYPE html>");
-            out.println("<html>");
-            out.println("<head>");
-            out.println("<title>Servlet Register</title>");            
-            out.println("</head>");
-            out.println("<body>");
-            out.println("<h1>Servlet Register at " + request.getContextPath() + "</h1>");
-            out.println("</body>");
-            out.println("</html>");
+        
+        try {
+            // Load driver
+            Class.forName(getServletContext().getInitParameter("dbDriverClass"));
+            
+            // Establish connection
+            String dbUsername = getServletContext().getInitParameter("dbUsername");
+            String dbPassword = getServletContext().getInitParameter("dbPassword");
+            
+            StringBuffer url = new StringBuffer(getServletContext().getInitParameter("dbDriverURL"))
+                    .append("://")
+                    .append(getServletContext().getInitParameter("dbHost"))
+                    .append(":")
+                    .append(getServletContext().getInitParameter("dbPort"))
+                    .append("/")
+                    .append(getServletContext().getInitParameter("dbName"));
+            
+            conn = DriverManager.getConnection(url.toString(), dbUsername, dbPassword);
         }
+        catch (SQLException sqle) {
+            System.out.println("SQLException error occured - " 
+                    + sqle.getMessage());
+        } 
+        catch (ClassNotFoundException nfe) {
+            System.out.println("ClassNotFoundException error occured - " 
+            + nfe.getMessage());
+        }
+        
+        // start new session
+        HttpSession session = request.getSession();
+
+        // get user input
+        String username = request.getParameter("username");
+        String userRole = request.getParameter("userRole");
+        String password1 = request.getParameter("password1");
+        String password2 = request.getParameter("password2");
+
+        if (!password1.equals(password2)) {
+            String msg = "Passwords do not match, pw1: " + password1 + " pw2: " + password2;
+            request.setAttribute("msg", msg);
+            request.getRequestDispatcher("Error.jsp").forward(request, response);
+            return;
+        }
+
+        try {
+            // Check if username exists in db
+            String userCheckQuery = "SELECT * FROM USERS WHERE USER_NAME = ?";
+            PreparedStatement userCheckPS = conn.prepareStatement(userCheckQuery);
+            userCheckPS.setString(1, username);
+            ResultSet rs = userCheckPS.executeQuery();
+
+            // get user's captcha answer
+            Captcha captcha = (Captcha) session.getAttribute(Captcha.NAME);
+            request.setCharacterEncoding("UTF-8");
+            String answer = request.getParameter("answer");
+
+            if (rs.next()) {
+                String msg = "Username already exists";
+                request.setAttribute("msg", msg);
+                request.getRequestDispatcher("Error.jsp").forward(request, response);
+            } else {
+                // verify captcha first
+                if (!captcha.isCorrect(answer)) {
+                    String msg = "Captcha answer is wrong!";
+                    request.setAttribute("msg", msg);
+                    request.getRequestDispatcher("Error.jsp").forward(request, response);
+                    return;
+                }
+                // save user to db
+                String saveUserQuery = "INSERT INTO USERS (USER_NAME, USER_PASSWORD, USER_ROLE) VALUES (?, ?, ?)";
+                PreparedStatement saveUserPS = conn.prepareStatement(saveUserQuery);
+                saveUserPS.setString(1, username);
+                // encrypt password
+                String keyStr = getServletContext().getInitParameter("dbSecurityKey");
+                byte[] key = keyStr.getBytes();
+                String cipherStr = getServletContext().getInitParameter("dbCipher");
+                String encryptedPassword = Security.encrypt(password1, key, cipherStr);
+                saveUserPS.setString(2, encryptedPassword);
+                saveUserPS.setString(3, userRole);
+                saveUserPS.execute();
+
+                // proceed to content page
+                session.setAttribute("username", username);
+                response.sendRedirect("LandingJSP.jsp");
+            }
+
+        } catch (SQLException sqle) {
+            sqle.printStackTrace();
+            // redirect to error page
+            String msg = sqle.getMessage();
+            request.setAttribute("msg", msg);
+            response.sendRedirect("Error.jsp");
+        }
+        
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
