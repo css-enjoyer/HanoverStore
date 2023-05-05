@@ -35,7 +35,7 @@
         </init-param>
         <init-param>
             <param-name>dbName</param-name>
-            <param-value>Product</param-value>
+            <param-value>HanoverStoreDB</param-value>
         </init-param>
     </servlet>
     <servlet>
