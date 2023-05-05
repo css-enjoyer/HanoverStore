@@ -24,21 +24,21 @@ import nl.captcha.Captcha;
  * @author maxim
  */
 public class Register extends HttpServlet {
-    
+
     private Connection conn;
-    
+
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        
+
         try {
             // Load driver
             Class.forName(getServletContext().getInitParameter("dbDriverClass"));
-            
+
             // Establish connection
             String dbUsername = getServletContext().getInitParameter("dbUsername");
             String dbPassword = getServletContext().getInitParameter("dbPassword");
-            
+
             StringBuffer url = new StringBuffer(getServletContext().getInitParameter("dbDriverURL"))
                     .append("://")
                     .append(getServletContext().getInitParameter("dbHost"))
@@ -46,18 +46,16 @@ public class Register extends HttpServlet {
                     .append(getServletContext().getInitParameter("dbPort"))
                     .append("/")
                     .append(getServletContext().getInitParameter("dbName"));
-            
+
             conn = DriverManager.getConnection(url.toString(), dbUsername, dbPassword);
-        }
-        catch (SQLException sqle) {
-            System.out.println("SQLException error occured - " 
+        } catch (SQLException sqle) {
+            System.out.println("SQLException error occured - "
                     + sqle.getMessage());
-        } 
-        catch (ClassNotFoundException nfe) {
-            System.out.println("ClassNotFoundException error occured - " 
-            + nfe.getMessage());
+        } catch (ClassNotFoundException nfe) {
+            System.out.println("ClassNotFoundException error occured - "
+                    + nfe.getMessage());
         }
-        
+
         // start new session
         HttpSession session = request.getSession();
 
@@ -113,8 +111,13 @@ public class Register extends HttpServlet {
 
                 // proceed to content page
                 session.setAttribute("username", username);
-                // note: to do set username and pw to redirect to homejsp (auto logins)
-                response.sendRedirect("LandingJSP.jsp");
+                // sets the username and pw to redirect to homejsp to automatically login
+//                response.sendRedirect("LandingJSP.jsp");
+                
+                request.setAttribute("registerSuccess", true);
+                request.setAttribute("username", username);
+                request.setAttribute("password", password1);
+                request.getRequestDispatcher("Login").forward(request, response);
             }
 
         } catch (SQLException sqle) {
@@ -124,7 +127,7 @@ public class Register extends HttpServlet {
             request.setAttribute("msg", msg);
             response.sendRedirect("Error.jsp");
         }
-        
+
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

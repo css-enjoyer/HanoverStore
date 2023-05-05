@@ -72,6 +72,14 @@ public class Login extends HttpServlet {
         String username = request.getParameter("username");
         String password = request.getParameter("password");
 
+        // check if request is from register
+        if (request.getAttribute("registerSuccess") != null
+                && (boolean) request.getAttribute("registerSuccess")) {
+            request.removeAttribute("registerSuccess");
+            username = (String) request.getAttribute("username");
+            password = (String) request.getAttribute("password");
+        }
+
         // get key and cipher from dd
         String keyStr = getServletContext().getInitParameter("dbSecurityKey");
         byte[] key = keyStr.getBytes();
@@ -137,7 +145,7 @@ public class Login extends HttpServlet {
 //                    request.getRequestDispatcher("login.jsp").include(request, response);
             request.getRequestDispatcher("Error.jsp").forward(request, response);
         }
-        
+
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
@@ -212,7 +220,7 @@ public class Login extends HttpServlet {
             System.out.println("SQLException error occured - "
                     + sqle.getMessage());
         }
-        
+
     }
-    
+
 }
