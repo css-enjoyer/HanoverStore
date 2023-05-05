@@ -29,19 +29,19 @@ public class Login extends HttpServlet {
         
         try {
             // Load driver
-            Class.forName(config.getInitParameter("dbDriverClass"));
+            Class.forName(getServletContext().getInitParameter("dbDriverClass"));
             
             // Establish connection
-            String dbUsername = config.getInitParameter("dbUsername");
-            String dbPassword = config.getInitParameter("dbPassword");
+            String dbUsername = getServletContext().getInitParameter("dbUsername");
+            String dbPassword = getServletContext().getInitParameter("dbPassword");
             
-            StringBuffer url = new StringBuffer(config.getInitParameter("dbDriverURL"))
+            StringBuffer url = new StringBuffer(getServletContext().getInitParameter("dbDriverURL"))
                     .append("://")
-                    .append(config.getInitParameter("dbHost"))
+                    .append(getServletContext().getInitParameter("dbHost"))
                     .append(":")
-                    .append(config.getInitParameter("dbPort"))
+                    .append(getServletContext().getInitParameter("dbPort"))
                     .append("/")
-                    .append(config.getInitParameter("dbName"));
+                    .append(getServletContext().getInitParameter("dbName"));
             
             con = DriverManager.getConnection(url.toString(), dbUsername, dbPassword);
         }
