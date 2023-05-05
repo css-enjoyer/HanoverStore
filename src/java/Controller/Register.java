@@ -113,6 +113,7 @@ public class Register extends HttpServlet {
 
                 // proceed to content page
                 session.setAttribute("username", username);
+                // note: to do set username and pw to redirect to homejsp (auto logins)
                 response.sendRedirect("LandingJSP.jsp");
             }
 

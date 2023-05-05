@@ -44,7 +44,7 @@
                 <button type="submit" class="btn" name="regUser">Register</button>
             </div>
             <p>
-                Already a member? <a href="login.jsp">Sign in</a>
+                Already a member? <a href="LandingJSP.jsp">Sign in</a>
             </p>
         </form>
     </body>
