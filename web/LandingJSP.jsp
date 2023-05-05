@@ -45,6 +45,7 @@
                             <li><a href="#about-contact">About</a></li>
                             <li><a href="#about-contact">Contact</a></li>
                             <li><button id="login" onclick="openForm()">Login</button></li>
+                            <li><a href="Register.jsp">Register</a></li>
                             <li><a onclick="openForm()"><i class="fa-solid fa-bag-shopping"></i></a></li>
                         </ul>
                     </nav>
@@ -221,8 +222,8 @@
         
         <form id="loginform" action="Login" method="POST">
             <h2>Login</h2>
-            <input type="text" name="user" placeholder="username"/>
-            <input type="password" name="pass" placeholder="password"/>
+            <input type="email" name="username" placeholder="username" required/>
+            <input type="password" name="password" placeholder="password" required/>
             <div class="formbuttons">
                 <button onclick="closeForm()">Cancel</button>
                 <input type="submit" value="Login"/>

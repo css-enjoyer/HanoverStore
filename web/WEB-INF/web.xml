@@ -8,36 +8,97 @@
             <param-name>productOffer</param-name>
             <param-value>AC/DC Chuck Taylors</param-value>
         </init-param>
-        <!-- Database Parameters -->
+    </servlet>
+    
+    <!-- Database Parameters -->
+    <context-param>
+        <param-name>dbDriverClass</param-name>
+        <param-value>org.apache.derby.jdbc.ClientDriver</param-value>
+    </context-param>
+    <context-param>
+        <param-name>dbUsername</param-name>
+        <param-value>app</param-value>
+    </context-param>
+    <context-param>
+        <param-name>dbPassword</param-name>
+        <param-value>app</param-value>
+    </context-param>
+    <context-param>
+        <param-name>dbDriverURL</param-name>
+        <param-value>jdbc:derby</param-value>
+    </context-param>
+    <context-param>
+        <param-name>dbHost</param-name>
+        <param-value>localhost</param-value>
+    </context-param>
+    <context-param>
+        <param-name>dbPort</param-name>
+        <param-value>1527</param-value>
+    </context-param>
+    <context-param>
+        <param-name>dbName</param-name>
+        <param-value>HanoverStoreDB</param-value>
+    </context-param>
+    
+    <!--Security-->
+    <context-param>
+        <param-name>dbSecurityKey</param-name>
+        <param-value>ics_2609ics_2609</param-value>
+    </context-param>
+    <context-param>
+        <param-name>dbCipher</param-name>
+        <param-value>AES/ECB/PKCS5Padding</param-value>
+    </context-param>
+    
+    <!--Captcha Servlets-->
+    <servlet>
+        <servlet-name>AudioCaptcha</servlet-name>
+        <servlet-class>nl.captcha.servlet.AudioCaptchaServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>SimpleCaptcha</servlet-name>
+        <servlet-class>nl.captcha.servlet.SimpleCaptchaServlet</servlet-class>
         <init-param>
-            <param-name>dbDriverClass</param-name>
-            <param-value>org.apache.derby.jdbc.ClientDriver</param-value>
+            <param-name>captcha-width</param-name>
+            <param-value>300</param-value>
         </init-param>
         <init-param>
-            <param-name>dbUsername</param-name>
-            <param-value>app</param-value>
-        </init-param>
-        <init-param>
-            <param-name>dbPassword</param-name>
-            <param-value>app</param-value>
-        </init-param>
-        <init-param>
-            <param-name>dbDriverURL</param-name>
-            <param-value>jdbc:derby</param-value>
-        </init-param>
-        <init-param>
-            <param-name>dbHost</param-name>
-            <param-value>localhost</param-value>
-        </init-param>
-        <init-param>
-            <param-name>dbPort</param-name>
-            <param-value>1527</param-value>
-        </init-param>
-        <init-param>
-            <param-name>dbName</param-name>
-            <param-value>HanoverStoreDB</param-value>
+            <param-name>captcha-height</param-name>
+            <param-value>100</param-value>
         </init-param>
     </servlet>
+    <servlet>
+        <servlet-name>StickyCaptcha</servlet-name>
+        <servlet-class>nl.captcha.servlet.StickyCaptchaServlet</servlet-class>
+        <init-param>
+            <!-- Optional; defaults to 200. -->
+            <param-name>captcha-width</param-name>
+            <param-value>250</param-value>
+        </init-param>
+        <init-param>
+            <!-- Optional; defaults to 50. -->
+            <param-name>captcha-height</param-name>
+            <param-value>75</param-value>
+        </init-param>
+        <init-param>
+            <!-- Time To Live, in ms. Optional; Defaults to 600000ms. -->
+            <param-name>ttl</param-name>
+            <param-value>100000</param-value>
+        </init-param>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>AudioCaptcha</servlet-name>
+        <url-pattern>/audio.wav</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>SimpleCaptcha</servlet-name>
+        <url-pattern>/simpleCaptcha.png</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>StickyCaptcha</servlet-name>
+        <url-pattern>/stickyCaptcha.png</url-pattern>
+    </servlet-mapping>
+    
     <servlet>
         <servlet-name>Logout</servlet-name>
         <servlet-class>Controller.Logout</servlet-class>
@@ -58,6 +119,11 @@
         <servlet-name>Order</servlet-name>
         <servlet-class>Controller.Order</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>Register</servlet-name>
+        <servlet-class>Controller.Register</servlet-class>
+    </servlet>
+    
     <servlet-mapping>
         <servlet-name>Login</servlet-name>
         <url-pattern>/Login</url-pattern>
@@ -82,14 +148,21 @@
         <servlet-name>Order</servlet-name>
         <url-pattern>/Order</url-pattern>
     </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Register</servlet-name>
+        <url-pattern>/Register</url-pattern>
+    </servlet-mapping>
+    
     <session-config>
         <session-timeout>
             30
         </session-timeout>
     </session-config>
+    
     <welcome-file-list>
         <welcome-file>LandingJSP.jsp</welcome-file>
     </welcome-file-list>
+    
     <error-page>
         <error-code>401</error-code>
         <location>/Error Pages/Error 401.jsp</location>
