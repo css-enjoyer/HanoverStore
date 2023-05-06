@@ -1,5 +1,10 @@
 # HanoverStore
-project
+## How to run
+1. Import needed libraries i.e. commons-codec-1.9, simplecaptcha-1.2.1, and itextpdf-5.5.9
+2. Create a new derby database in netbeans with a name of HanoverStoreDB and connect to it
+3. Run the PRODUCT.sql and USERS.sql sql script files
+4. Register new user or use Util.FillUsers.java
+
 
 # Git Tutorial
 ## Git vs GitHub
