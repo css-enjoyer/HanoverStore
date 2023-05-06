@@ -108,16 +108,14 @@ public class Register extends HttpServlet {
                 saveUserPS.setString(2, encryptedPassword);
                 saveUserPS.setString(3, userRole);
                 saveUserPS.execute();
-
-                // proceed to content page
-                session.setAttribute("username", username);
-                // sets the username and pw to redirect to homejsp to automatically login
-//                response.sendRedirect("LandingJSP.jsp");
                 
+                // redirect to homejsp to automatically login
                 request.setAttribute("registerSuccess", true);
-                request.setAttribute("username", username);
-                request.setAttribute("password", password1);
+                session.setAttribute("username", username);
+                session.setAttribute("userRole", userRole);
                 request.getRequestDispatcher("Login").forward(request, response);
+                
+//                response.sendRedirect("LandingJSP.jsp");
             }
 
         } catch (SQLException sqle) {

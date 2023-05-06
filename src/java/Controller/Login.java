@@ -75,9 +75,11 @@ public class Login extends HttpServlet {
         // check if request is from register
         if (request.getAttribute("registerSuccess") != null
                 && (boolean) request.getAttribute("registerSuccess")) {
+            
             request.removeAttribute("registerSuccess");
-            username = (String) request.getAttribute("username");
-            password = (String) request.getAttribute("password");
+            loadProducts(request, response);
+            response.sendRedirect("HomeJSP.jsp");
+            return;
         }
 
         // get key and cipher from dd
