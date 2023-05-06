@@ -1,7 +1,7 @@
-package security;
+package Security;
 
 
-import security.Security;
+import Security.Security;
 
 
 public class TestEncryption {
