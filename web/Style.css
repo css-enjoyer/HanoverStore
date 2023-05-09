@@ -398,6 +398,34 @@ form button, form input[type="submit"] {
     background-color: #009933;
 }
 
+/* Register Page */
+.register {
+    text-align: center;
+    display: flex;
+    flex-flow: column wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 25px;
+}
+
+.register table {
+    margin-bottom: 20px;
+    border-collapse: collapse;
+}
+
+.register td {
+    padding: 3px;
+}
+
+.register input {
+    padding: 5px 10px;
+    color: #111;
+}
+
+.register .btn {
+    margin-bottom: 10px;
+}
+
 /* Scroll Bar */
 ::-webkit-scrollbar-track {
 	box-shadow: inset 0 0 2px rgba(0,0,0,1);
