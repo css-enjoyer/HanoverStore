@@ -398,6 +398,70 @@ form button, form input[type="submit"] {
     background-color: #009933;
 }
 
+/* Register Form */
+#registerform {
+    position: fixed;
+    width: 30vw;
+    left: 0;
+    right: 0;
+    margin: auto;
+    top: 12vh;
+    
+    display: none;
+    flex-direction: column;
+    gap: 10px;
+    padding: 60px;
+    z-index: 1;
+    
+    background-color: rgba(125, 125, 125, .5);
+    backdrop-filter: blur( 5px );
+    border: 1px solid rgba(255, 255, 255, .3);
+    box-shadow: 0 10px 10px 0 rgba(0, 0, 0, .5);
+}
+#registerform .form-input, 
+#registerform .register-captcha {
+    display: flex;
+    flex-flow: column nowrap;
+}
+#registerform .register-captcha img {
+    margin-top: 20px;
+}
+#registerform .register-captcha .form-input {
+    margin-top: 5px;
+}
+#registerform h2 {
+    color: rgb(255, 255, 255);
+    margin-bottom: 30px;
+}
+#registerform * {
+    border: none;
+    outline: none;
+}
+#registerform input {
+    color: rgb(0, 0, 0);
+    padding: 5px 10px;
+}
+#registerform .formbuttons {
+    display: flex;
+    justify-content: space-between;
+    margin: 30px 0;
+}
+#registerform button, 
+#registerform input[type="submit"] {
+    width: min-content;
+    padding: 10px 35px;
+    color: white;
+    font-family: inherit;
+    cursor: pointer;
+}
+
+#registerform button {
+    background-color: #111;
+}
+#registerform input[type="submit"] {
+    background-color: #009933;
+}
+
 /* Scroll Bar */
 ::-webkit-scrollbar-track {
 	box-shadow: inset 0 0 2px rgba(0,0,0,1);

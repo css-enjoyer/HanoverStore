@@ -3,12 +3,6 @@
 <%@page import="Model.ProductInventory"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 
-<%--
-    ProductInventory inventory = new ProductInventory();
-    ArrayList<Product> pList = inventory.getProductInvetory();
-    Product pOffer = inventory.getProductOffer();
---%>
-
 <!DOCTYPE html>
 <html>
     <head>
@@ -24,11 +18,17 @@
         <link rel="shortcut icon" href="./Images/LogoIconT.png">
     </head>
     <script> <!-- Pop-up Script -->
-        function openForm() {
+        function openLoginForm() {
             document.getElementById("loginform").style.display = "flex";
         }
-        function closeForm() {
+        function closeLoginForm() {
             document.getElementById("loginform").style.display = "none";
+        }
+        function openRegisterForm() {
+            document.getElementById("registerform").style.display = "flex";
+        }
+        function closeRegisterForm() {
+            document.getElementById("registerform").style.display = "none";
         }
     </script>
     <body>
@@ -44,9 +44,9 @@
                             <li><a href="#products">Products</a></li>
                             <li><a href="#about-contact">About</a></li>
                             <li><a href="#about-contact">Contact</a></li>
-                            <li><button id="login" onclick="openForm()">Login</button></li>
-                            <li><a href="Register.jsp">Register</a></li>
-                            <li><a onclick="openForm()"><i class="fa-solid fa-bag-shopping"></i></a></li>
+                            <li><button id="login" onclick="openLoginForm()">Login</button></li>
+                            <li><button id="login" onclick="openRegisterForm()">Register</button></li>
+                            <li><a onclick="openLoginForm()"><i class="fa-solid fa-bag-shopping"></i></a></li>
                         </ul>
                     </nav>
                 </div>
@@ -54,7 +54,7 @@
                     <div class="col-2">
                         <h1>The Best Plug <br> For The Best Kicks!</h1>
                         <p>Don't ever let your head down, unless it's to admire our shoes.</p>
-                        <a class="explore-btn btn" onclick="openForm()">Explore Now &#8594;</a> <!-- Html code -->
+                        <a class="explore-btn btn" onclick="openLoginForm()">Explore Now &#8594;</a> <!-- Html code -->
                     </div>
                     <div class="col-2">
                         <img src="Images/Jordans.png"/>
@@ -79,56 +79,6 @@
                 </div>
             </div>
         </div>
-        
-<!--    REMOVE (?) 
-        
-        <!-- Products 
-        <div class="small-container" id="products">
-            <h2 class="title">Available Products</h2>
-            <div class="row">
-        <%--  
-            if(!pList.isEmpty()) {
-                for(Product p: pList) {     
-        %>
-                    <div class="col-4">
-                        <div class="img-container">
-                            <img class="feat-prod-img" src="<%= p.getImage() %>"/>
-                        </div>
-                        <h4><%= p.getName() %></h4>
-                        <div class="rating">
-                    <%  for(int i = 0; i < p.getRating(); i++) { %>
-                            <i class="fa fa-star"></i>
-                    <%  }                                        %>
-                        </div>
-                        <p>₱<%= p.getPrice() %></p>
-                    </div>
-        <%      
-                }               
-            }   
-        --%>
-            </div>
-        </div>
-        
-         Offered Product 
-        <div class="offer">
-            <div class="small-container">
-                <div class="row">
-                    <div class="col-2">
-                        <img src="<%--= pOffer.getImage() %>" class="offer-img"/>
-                    </div>
-                    <div class="col-2">
-                        <p>Converse pays homage to to the band’s 1978 album ‘Powerage’</p>
-                        <h1><%= pOffer.getName() %></h1>
-                        <small>In 2009, Converse dropped a Chuck Taylor All Stars collection featuring Australian rock legends AC/DC.</small>
-                        <br>
-                        <p>₱<%= pOffer.getPrice() --%></p>
-                        <a onclick="openForm()" class="btn">Buy Now &#8594;</a>
-                    </div>
-                </div>
-            </div>
-        </div>
--->
-        
         <!-- Testimonial Section -->
         <div class="testimonial">
             <div class="small-container">
@@ -219,18 +169,50 @@
             </div>
         </div>
         
-        
+        <!-- Pop-up Forms -->
         <form id="loginform" action="Login" method="POST">
             <h2>Login</h2>
             <input type="email" name="username" placeholder="username" required/>
             <input type="password" name="password" placeholder="password" required/>
             <div class="formbuttons">
-                <button onclick="closeForm()">Cancel</button>
+                <button onclick="closeLoginForm()">Cancel</button>
                 <input type="submit" value="Login"/>
             </div>
         </form>
-        
-        
-        
+        <form id="registerform" action="Register" method="POST">
+            <h2>Register</h2>
+            <div class="form-input">
+                <label>Username</label>
+                <input type="email" name="username" required>
+            </div>
+
+            <div class="form-input">
+                <label>Password</label>
+                <input type="password" name="password1" required>
+            </div>
+
+            <div class="form-input">
+                <label>Confirm password</label>
+                <input type="password" name="password2" required>
+            </div>
+
+            <div class="register-captcha">
+                <img src="simpleCaptcha.png" />
+                <div class="form-input">
+                    <label>Answer</label>
+                    <input type="text" name="answer" required>
+                </div>
+            </div>
+
+            <div class="formbuttons">
+                <button onclick="closeRegisterForm()">Cancel</button>
+                <input type="submit" value="Register"/>
+            </div>
+            <!-- Note: default user role is "user" -->
+            <input type="hidden" name="userRole" value="user">
+        </form>
+        <p>
+                Already a member? <a href="LandingJSP.jsp">Sign in</a>
+        </p>
     </body>
 </html>
