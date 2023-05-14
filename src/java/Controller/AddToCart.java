@@ -28,6 +28,7 @@ public class AddToCart extends HttpServlet {
             cartProduct.setId(id);
             cartProduct.setName(name);
             cartProduct.setPrice(price);
+            // Update
             cartProduct.setQuantity(1);
             
             HttpSession session = request.getSession();
