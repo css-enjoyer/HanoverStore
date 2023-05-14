@@ -462,6 +462,22 @@ form button, form input[type="submit"] {
     background-color: #009933;
 }
 
+/* Login Error Page */
+.error {
+    text-align: center;
+}
+
+.error-heading {
+    font-size: 55px;
+    text-align: center;
+    margin-top: 15vh;
+}
+
+.error-msg {
+    margin-top: 10vh;
+    font-size: 20px;
+}
+
 /* Scroll Bar */
 ::-webkit-scrollbar-track {
 	box-shadow: inset 0 0 2px rgba(0,0,0,1);
