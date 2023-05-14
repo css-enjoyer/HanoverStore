@@ -66,7 +66,7 @@ public class Register extends HttpServlet {
         String password2 = request.getParameter("password2");
 
         if (!password1.equals(password2)) {
-            String msg = "Passwords do not match, pw1: " + password1 + " pw2: " + password2;
+            String msg = "Passwords do not match";
             request.setAttribute("msg", msg);
             request.getRequestDispatcher("Error.jsp").forward(request, response);
             return;
