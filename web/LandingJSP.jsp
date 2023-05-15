@@ -169,7 +169,7 @@
             </div>
         </div>
         
-        <!-- Pop-up Forms -->
+        <!-- Login Form -->
         <form id="loginform" action="Login" method="POST">
             <h2>Login</h2>
             <input type="email" name="username" placeholder="username" required/>
@@ -179,23 +179,22 @@
                 <input type="submit" value="Login"/>
             </div>
         </form>
+        
+        <!-- Register Form -->
         <form id="registerform" action="Register" method="POST">
             <h2>Register</h2>
             <div class="form-input">
                 <label>Username</label>
                 <input type="email" name="username" required>
             </div>
-
             <div class="form-input">
                 <label>Password</label>
                 <input type="password" name="password1" required>
             </div>
-
             <div class="form-input">
                 <label>Confirm password</label>
                 <input type="password" name="password2" required>
             </div>
-
             <div class="register-captcha">
                 <img src="simpleCaptcha.png" />
                 <div class="form-input">
@@ -203,7 +202,6 @@
                     <input type="text" name="answer" required>
                 </div>
             </div>
-
             <div class="formbuttons">
                 <button onclick="closeRegisterForm()">Cancel</button>
                 <input type="submit" value="Register"/>

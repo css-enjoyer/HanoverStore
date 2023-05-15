@@ -82,7 +82,15 @@
                         <%  }%>
                     </div>
                     <p>₱<%= p.getPrice()%></p>
-                    <a href="AddToCart?id=<%=p.getId()%>&name=<%=p.getName()%>&price=<%=p.getPrice()%>">Add To Cart</a>
+                    <form action="AddToCart" method="POST">
+                        <!-- Product Values -->
+                        <input type="hidden" name="id" value="<%=p.getId()%>">
+                        <input type="hidden" name="name" value="<%=p.getName()%>">
+                        <input type="hidden" name="price" value="<%=p.getPrice()%>">
+                        
+                        <input type="submit" class="btn" value="Add To Cart">
+                    </form>
+                    <!--<a href="AddToCart?id=<%--=p.getId()%>&name=<%=p.getName()%>&price=<%=p.getPrice()--%>">Add To Cart</a>-->
                 </div>
                 <%
                         }
@@ -104,7 +112,15 @@
                         <small>In 2009, Converse dropped a Chuck Taylor All Stars collection featuring Australian rock legends AC/DC.</small>
                         <br>
                         <p>₱<%= pOffer.getPrice()%></p>
-                        <a href="AddToCart?id=<%=pOffer.getId()%>&name=<%=pOffer.getName()%>&price=<%=pOffer.getPrice()%>" class="btn">Buy Now &#8594;</a>
+                        <form action="AddToCart" method="POST">
+                            <!-- Product Offer Values -->
+                            <input type="hidden" name="id" value="<%=pOffer.getId()%>">
+                            <input type="hidden" name="name" value="<%=pOffer.getName()%>">
+                            <input type="hidden" name="price" value="<%=pOffer.getPrice()%>">
+
+                            <input type="submit" class="btn" value="Buy Now &#8594;">
+                        </form>
+                        <!--<a href="AddToCart?id=<%--=pOffer.getId()%>&name=<%=pOffer.getName()%>&price=<%=pOffer.getPrice()--%>" class="btn">Buy Now &#8594;</a>-->
                     </div>
                 </div>
             </div>
@@ -149,19 +165,5 @@
                 <p class="copyright">Copyright 2020 - Group 8</p>
             </div>
         </div>
-
-        <!--    
-            <div class="mainsection">
-        <%-- if(session.getAttribute("order-status") == null) {
-              // order failed
-              out.println("order failed");
-          } else {
-              // order success
-              out.println("order success");
-          } --%> 
-          
-      </div>
-        -->
-
     </body>
 </html>
