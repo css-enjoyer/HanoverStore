@@ -209,8 +209,8 @@
             <!-- Note: default user role is "user" -->
             <input type="hidden" name="userRole" value="user">
         </form>
-        <p>
+<!--        <p>
                 Already a member? <a href="LandingJSP.jsp">Sign in</a>
-        </p>
+        </p>-->
     </body>
 </html>
