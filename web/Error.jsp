@@ -23,7 +23,7 @@
 <!--        Note: error can be shown in the login/ register page itself rather than
             being directed to a separate page-->
         <div class="error header">
-            <h1 class="error-heading">Registration Error</h1>
+            <h1 class="error-heading">Error</h1>
                 <% String msg = (String) request.getAttribute("msg");
                     if (msg != null) { %>
                 <div class="error-msg">
