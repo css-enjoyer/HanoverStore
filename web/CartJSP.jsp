@@ -98,7 +98,7 @@
                     </div>
                 </div>
                 <hr>
-                <p class="copyright">Copyright 2020 - Group 8</p>
+                <p class="copyright">Est. 2020</p>
             </div>
         </div>
     </body>
